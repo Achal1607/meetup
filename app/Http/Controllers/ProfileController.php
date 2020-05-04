@@ -34,7 +34,8 @@ class ProfileController extends Controller
             'year'=>'required',
             'place'=>'',
             'education'=>'',
-            'avatar'=>''
+            'avatar'=>'',
+            'bio'=>''
         ]);
         auth()->user()->profile->update($data);
         return redirect("/profile/{$user->id}");   

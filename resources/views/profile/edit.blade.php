@@ -22,7 +22,7 @@
                             <label for="username" class="col-md-4 col-form-label text-md-right">Username</label>
 
                             <div class="col-md-6">
-                                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') ?? $user->profile->username }}" required autocomplete="username">
+                                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" placeholder="Username" value="{{ old('username') ?? $user->profile->username }}" required autocomplete="username">
 
                                 @error('username')
                                 <span class="invalid-feedback" role="alert">
@@ -57,11 +57,8 @@
                             </span>
                             @enderror
                         </div>
-
-
-
                         <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-right">Gender:</label>
+                            <label class="col-md-4 col-form-label text-md-right">Gender</label>
                             <span class="ml-md-3">
                                 <label class="radio-inline pr-md-2"><input type="radio" name="gender" value="Male" required />Male</label>
                                 <label class="radio-inline pr-md-2"><input type="radio" name="gender" value="Female" />Female</label>
@@ -75,13 +72,26 @@
                                 @enderror
                             </span>
                         </div>
+                        <div class="form-group row">
+                            <label for="bio" class="col-md-4 col-form-label text-md-right">Bio <small>(Optional)</small></label>
+
+                            <div class="col-md-6">
+                                <textarea id="bio" type="textarea" class="form-control" name="bio" value="{{ old('bio') ?? $user->profile->bio }}" placeholder="bio" autocomplete="bio">
+                                </textarea>
+                            </div>
+                            @error('bio')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
 
 
                         <div class="form-group row">
-                            <label for="place" class="col-md-4 col-form-label text-md-right">Current City</label>
+                            <label for="place" class="col-md-4 col-form-label text-md-right">Current City <small>(Optional)</small></label>
 
                             <div class="col-md-6">
-                                <input id="place" type="text" class="form-control" name="place" value="{{ old('place') ?? $user->profile->place }}" autocomplete="place">
+                                <input id="place" type="text" class="form-control" name="place" value="{{ old('place') ?? $user->profile->place }}" placeholder="Current City" autocomplete="place">
                             </div>
                             @error('place')
                             <span class="invalid-feedback" role="alert">
@@ -91,10 +101,10 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="education" class="col-md-4 col-form-label text-md-right">Place Of Education</label>
+                            <label for="education" class="col-md-4 col-form-label text-md-right">Place Of Education <small>(Optional)</small></label>
 
                             <div class="col-md-6">
-                                <input id="education" type="text" class="form-control" name="education" value="{{ old('education') ?? $user->profile->education }}" autocomplete="education">
+                                <input id="education" type="text" class="form-control" name="education" value="{{ old('education') ?? $user->profile->education }}" placeholder="Place Of Education" autocomplete="education">
                             </div>
                             @error('education')
                             <span class="invalid-feedback" role="alert">

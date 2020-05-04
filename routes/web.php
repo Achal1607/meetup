@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/posts/create','PostsController@create');
+Route::post('/posts','PostsController@store');
+Route::get('/posts/{post}','PostsController@show');
+
 
 Route::get('/profile/{user}','ProfileController@index')->name('profiles.show');
 Route::get('/profile/{user}/edit','ProfileController@edit')->name('profiles.edit');

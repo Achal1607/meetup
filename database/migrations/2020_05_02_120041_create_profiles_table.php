@@ -22,6 +22,7 @@ class CreateProfilesTable extends Migration
             $table->string('month')->nullable();
             $table->unsignedBigInteger('year')->nullable();
             $table->string('gender')->nullable();
+            $table->string('bio')->nullable();
             $table->string('place')->nullable();
             $table->string('education')->nullable();
             $table->timestamps();
