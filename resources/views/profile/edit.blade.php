@@ -14,7 +14,11 @@
                         <div class="form-group row col-md-6 offset-md-4">
                             <label for="avatar">
                                 <input type="file" name="avatar" id="avatar" style="display:none;" accept="image/*">
-                                <img src="/svg/male.png" alt="profile image" class="rounded-circle" style="cursor: pointer">
+                                @if($user->profile->avatar==null)
+                                <img src="/svg/male.png" alt="profile image" class="rounded-circle" style="cursor: pointer;height:250px;width:250px">
+                                @else
+                                <img src="/storage/{{$user->profile->avatar}}" alt="profile image" class="rounded-circle" style="cursor: pointer;height:250px;width:250px">
+                                @endif
                             </label>
                         </div>
 
