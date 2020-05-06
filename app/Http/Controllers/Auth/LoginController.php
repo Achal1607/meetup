@@ -28,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -48,7 +48,7 @@ class LoginController extends Controller
   }
     
      // Obtain the user information from Google.
-    public function handleProviderCallback(USER $user)
+    public function handleProviderCallback(User $user)
     {
         try {
             $user = Socialite::driver('google')->stateless()->user();
@@ -61,6 +61,7 @@ class LoginController extends Controller
         if($existingUser){
             // log them in
             auth()->login($existingUser, true);
+            return redirect("/profile/{$existingUser->id}");
         }
          else {
             // create a new user
@@ -72,9 +73,8 @@ class LoginController extends Controller
             $newUser->password=null;
             $newUser->save();
             auth()->login($newUser, true);
-            
+            return redirect("/profile/{$newUser->id}"); 
         }
 
-        return redirect('/home');
     }
     }

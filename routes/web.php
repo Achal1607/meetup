@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,8 +18,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Route::get('/posts/create','PostsController@create');
+Route::post('/posts','PostsController@store');
+Route::get('/posts/{post}','PostsController@show');
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/profile/{user}','ProfileController@index')->name('profiles.show');
+Route::get('/profile/{user}/edit','ProfileController@edit')->name('profiles.edit');
+Route::patch('/profile/{user}','ProfileController@update')->name('profiles.update');
+
+Auth::routes();
 Route::get('/redirect', 'Auth\LoginController@redirectToProvider');
 Route::get('/callback', 'Auth\LoginController@handleProviderCallback');
+
